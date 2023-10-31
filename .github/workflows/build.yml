@@ -2,15 +2,11 @@ name: Build
 
 # Trigger on push events and pull requests to the repository
 on:
-  push:
   pull_request:
 
 jobs:
   build-linux:
-    runs-on: ubuntu-20.04
-    strategy:
-      matrix:
-        python-version: [ "3.10" ]
+    runs-on: ubuntu-latest
     steps:  
       - name: Checkout the code
         uses: actions/checkout@v3
@@ -29,9 +25,6 @@ jobs:
 
   build-macos:
     runs-on: macos-latest
-    strategy:
-      matrix:
-        python-version: [ "3.10" ]
     steps:
       - name: Checkout the code
         uses: actions/checkout@v3
