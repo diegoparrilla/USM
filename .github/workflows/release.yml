@@ -19,10 +19,10 @@ jobs:
         run: ./build_mac_linux.sh
 
       - name: Create the dist/linux folder
-        run: mkdir -p ./dist/linux
+        run: mkdir -p ./dist
 
       - name: Copy the Linux binary to the dist/linux folder
-        run: cp usm ./dist/linux/
+        run: cp usm ./dist/usm.linux
 
   build-macos:
     runs-on: macos-latest
@@ -37,10 +37,10 @@ jobs:
         run: ./build_mac_linux.sh
 
       - name: Create the dist/macos folder
-        run: mkdir -p ./dist/macos
+        run: mkdir -p ./dist
       
       - name: Copy the macOS binary to the dist/macos folder
-        run: cp usm ./dist/macos/
+        run: cp usm ./dist/usm.macos
 
   build-windows:
     runs-on: windows-latest
@@ -57,10 +57,10 @@ jobs:
         run: .\build_mingw.bat
 
       - name: Create the dist/windows folder
-        run: mkdir .\dist\windows
+        run: mkdir .\dist
 
       - name: Copy the Windows binary to the dist/windows folder
-        run: copy usm.exe .\dist\windows\
+        run: copy usm.exe .\dist\usm.exe
   
   create-release:
     needs: [build-linux, build-macos, build-windows]
