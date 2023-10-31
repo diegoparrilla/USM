@@ -47,3 +47,23 @@ jobs:
       
       - name: Copy the macOS binary to the dist/macos folder
         run: cp usm ./dist/macos/
+
+  build-windows:
+    runs-on: windows-latest
+    steps:
+      - name: Checkout the code
+        uses: actions/checkout@v3
+
+      - name: Set up MinGW
+        run: |
+          choco install mingw
+          echo "C:\ProgramData\chocolatey\lib\mingw\tools\install\mingw64\bin" >> $GITHUB_PATH
+
+      - name: Build Windows version using MinGW
+        run: .\build_mingw.bat
+
+      - name: Create the dist/windows folder
+        run: mkdir .\dist\windows
+
+      - name: Copy the Windows binary to the dist/windows folder
+        run: copy usm.exe .\dist\windows\
