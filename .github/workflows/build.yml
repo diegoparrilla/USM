@@ -20,5 +20,8 @@ jobs:
       with:
         python-version: ${{ matrix.python-version }}
 
+    - name: Give execute permissions to the script
+      run: chmod +x ./build_mac_linux.sh        
+
     - name: Run - Build Linux version
       run: ./build_mac_linux.sh
